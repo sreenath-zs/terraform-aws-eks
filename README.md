@@ -3,7 +3,7 @@
 Creating Cluster-EKS using Terraform
 
 ## kubeconfig updade command
-#### aws eks update-kubeconfig --region <us-east-1> --name <EKS ClusterName> 
+#### aws eks update-kubeconfig --region us-east-1 --name EKSClusterName
 
 
 
