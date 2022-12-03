@@ -20,12 +20,14 @@ resource "kubernetes_deployment" "sample-reactapp" {
     selector {
       match_labels = {
         app = "sample-reactapp"
+        system-type: istio
       }
     }
     template {
       metadata {
         labels = {
           app = "sample-reactapp"
+          system-type: istio
         }
       }
       spec {

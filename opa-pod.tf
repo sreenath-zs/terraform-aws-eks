@@ -7,7 +7,7 @@ resource "kubernetes_deployment" "opa_dep" {
     name = "opa"
     labels = {
       app         = "opa"
-      #system-type = "aws-api-gateway"
+      system-type: istio
     }
   }
 
@@ -17,7 +17,7 @@ resource "kubernetes_deployment" "opa_dep" {
     selector {
       match_labels = {
         app         = "opa"
-       # system-type = "aws-api-gateway"
+        system-type: istio
       }
     }
 
@@ -25,7 +25,7 @@ resource "kubernetes_deployment" "opa_dep" {
       metadata {
         labels = {
           app         = "opa"
-         # system-type = "aws-api-gateway"
+          system-type: istio
         }
       }
 
@@ -64,7 +64,7 @@ resource "kubernetes_service" "opa_svc" {
     name = "opa-svc"
     labels = {
       app         = "opa"
-      #system-type = "aws-api-gateway"
+      system-type: istio
     }
     annotations = {
       "service.beta.kubernetes.io/aws-load-balancer-type" = "nlb"
@@ -74,7 +74,7 @@ resource "kubernetes_service" "opa_svc" {
     external_traffic_policy = "Local"
     selector = {
       app         = "opa"
-      #system-type = "aws-api-gateway"
+      system-type: istio
     }
     port {
       name        = "http"
@@ -96,7 +96,7 @@ resource "kubernetes_config_map" "example" {
               service: styra
             labels:
               system-id: b0fa967f370f40f29848e8b7ea669746
-              system-type: aws-api-gateway
+              system-type: istio
             services:
             - name: styra
               url: http://slp-aws-gateway-svc:8080/v1
